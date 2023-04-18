@@ -1,6 +1,7 @@
 ﻿#include "framelesswindow.h"
 #ifdef Q_OS_MAC
 #include <QDebug>
+#include <QSysInfo>
 #include <Cocoa/Cocoa.h>
 
 CFramelessWindow::CFramelessWindow(QWidget *parent)
@@ -188,7 +189,7 @@ void CFramelessWindow::mouseMoveEvent(QMouseEvent *event)
 {
     if (!m_bMousePressed) return QMainWindow::mouseMoveEvent(event);
     m_bWinMoving = true;
-    this->move(m_WindowPos + (event->globalPos() - m_MousePos));
+    this->move(m_WindowPos + (event->globalPosition() - m_MousePos));
     return QMainWindow::mouseMoveEvent(event);
 }
 
